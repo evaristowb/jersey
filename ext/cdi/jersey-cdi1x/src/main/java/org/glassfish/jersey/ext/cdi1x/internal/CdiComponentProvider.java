@@ -310,7 +310,7 @@ public class CdiComponentProvider implements ComponentProvider, Extension {
         final boolean isManagedBean = isManagedBean(clazz);
         final boolean isJaxRsComponent = isJaxRsComponentType(clazz);
 
-        if (!isCdiManaged && !isManagedBean && !isJaxRsComponent) {
+        if (!isCdiManaged && !isManagedBean && (!isJaxRsComponent || clazz.isInterface())) {
             return false;
         }
 
